@@ -118,6 +118,7 @@ const Movie = ({}) => {
       >
         {movieList.map((movie) => (
           <Cards
+            key={movie.id}
             cardId={movie.id} // Always use a unique key in lists
             title={movie.title}
             year={years(movie.release_date)}
@@ -133,6 +134,7 @@ const Movie = ({}) => {
       </div>
       <p>{pages}</p>
       <PageButton
+        key={"<"}
         className="btn btn-outline-primary"
         onclick={() => {
           setPages((prevPages) => prevPages - 1);
@@ -143,6 +145,7 @@ const Movie = ({}) => {
       />
       {pageNumbers.map((page) => (
         <PageButton
+          key={page}
           className={
             pages === page ? "btn btn-primary" : "btn btn-outline-primary"
           }
@@ -156,6 +159,7 @@ const Movie = ({}) => {
       ))}
 
       <PageButton
+        key={">"}
         className="btn btn-outline-primary"
         onclick={() => {
           setPages((prevPages) => prevPages + 1);
