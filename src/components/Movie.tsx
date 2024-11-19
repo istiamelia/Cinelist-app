@@ -52,7 +52,9 @@ const Movie = ({}) => {
 
   const getMovie = () => {
     fetch(
-      `https://api.themoviedb.org/3/discover/movie?api_key=838c80a311fbed38528cd1e877ff00ac&language=en-US&page=${pages}`
+      `https://api.themoviedb.org/3/discover/movie?api_key=${
+        import.meta.env.VITE_API_KEY
+      }&language=en-US&page=${pages}`
     )
       .then((res) => res.json())
       .then((json) => {
@@ -98,6 +100,7 @@ const Movie = ({}) => {
       <Slider {...settings}>
         {movieList.map((movie) => (
           <Popular
+            key={movie.id}
             cardId={movie.id}
             imageUrl={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
             onMovieIdChange={setBillboardId}
