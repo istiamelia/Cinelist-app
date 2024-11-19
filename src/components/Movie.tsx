@@ -13,6 +13,7 @@ interface Movie {
   poster_path: string;
   vote_average: number;
   year: number;
+  genre_ids: number[];
 }
 
 const years = (date: string) => {
@@ -46,7 +47,7 @@ function PageButton({
 const Movie = ({}) => {
   const [movieList, setMovieList] = useState<Movie[]>([]);
   const [pageNumbers, setPageNumbers] = useState([1, 2, 3, 4, 5]);
-  const [pages, setPages] = useState(1);
+  const [pages, setPages] = useState(2);
   const [billboardId, setBillboardId] = useState(0);
   const [firstMovieId, setFirstMovieId] = useState<number | null>(null);
 
@@ -80,14 +81,38 @@ const Movie = ({}) => {
     });
     setPageNumbers((currentPage) => (currentPage = pageList));
   }
-
   var settings = {
     dots: true,
     infinite: true,
     speed: 200,
-    slidesToShow: 8,
+    slidesToShow: 7,
     slidesToScroll: 5,
   };
+
+  function filterGenre(genre_id: number) {
+    const scifiMovies: Movie[] = movieList.filter((movie) =>
+      movie.genre_ids.includes(genre_id)
+    );
+    return (
+      <>
+        {scifiMovies.map((movie) => (
+          <Cards
+            key={movie.id}
+            cardId={movie.id} // Always use a unique key in lists
+            title={movie.title}
+            year={years(movie.release_date)}
+            imageUrl={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+            rating={movie.vote_average}
+            overview={
+              movie.overview.length > 250
+                ? `${movie.overview.substring(0, 250)}...`
+                : movie.overview
+            }
+          />
+        ))}
+      </>
+    );
+  }
 
   return (
     <div>
@@ -112,28 +137,15 @@ const Movie = ({}) => {
           />
         ))}
       </Slider>
-      <div
-        className="movie-card"
-        style={{ paddingLeft: "2rem", paddingRight: "2rem" }}
-      >
-        {movieList.map((movie) => (
-          <Cards
-            key={movie.id}
-            cardId={movie.id} // Always use a unique key in lists
-            title={movie.title}
-            year={years(movie.release_date)}
-            imageUrl={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-            rating={movie.vote_average}
-            overview={
-              movie.overview.length > 250
-                ? `${movie.overview.substring(0, 250)}...`
-                : movie.overview
-            }
-          />
-        ))}
+      <div style={{ paddingLeft: "2rem", paddingRight: "2rem" }}>
+        <h2 className="header-genre-title">Science Fiction</h2>
+        {/* Genre id for Science Fiction is 878 */}
+        <div className="movie-card">{filterGenre(878)}</div>
+        <h2 className="header-genre-title">Horror</h2>
+        {/* Genre id for Science Fiction is 27 */}
+        <div className="movie-card">{filterGenre(27)}</div>
       </div>
-      <p>{pages}</p>
-      <PageButton
+      {/* <PageButton
         key={"<"}
         className="btn btn-outline-primary"
         onclick={() => {
@@ -167,7 +179,7 @@ const Movie = ({}) => {
         }}
         disabled={false}
         name={">"}
-      />
+      /> */}
     </div>
   );
 };

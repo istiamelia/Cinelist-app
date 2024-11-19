@@ -47,7 +47,7 @@ const Cards = ({ title, year, imageUrl, rating, cardId, overview }: Props) => {
           hoverCard === cardId
             ? "scale(1.5)" // Scale up on hover
             : "scale(1)", // Normal size otherwise
-        zIndex: hoverCard === cardId ? "10" : "1", // Increase z-index on hover
+        zIndex: hoverCard === cardId ? "100" : "1", // Increase z-index on hover
         top: hoverCard === cardId ? "-10px" : "0",
         width: "10rem",
       }}

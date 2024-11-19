@@ -34,7 +34,7 @@ const Billboard = ({ billboardId }: Props) => {
     const fetchData = async () => {
       const data: Movie | null = await getMovieDetails(movieId);
       if (data) {
-        // console.log(data);
+        console.log(data);
         startTransition(() => {
           setPosterPath(data.backdrop_path);
           setMovieDetails(data);
