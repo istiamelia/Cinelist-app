@@ -1,0 +1,251 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+body{
+  background-color: #141414;
+  margin: 0;
+}
+
+/* Navbar */
+.navbar{
+  font-family: Lato, Helvetica, Arial, sans-serif;
+  height: 40px;
+  padding: 0.5rem;
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  place-items: center;
+}
+
+.navbar-brand{
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  
+}
+
+
+.menu ul{
+  width: 500px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+
+.menu ul li{
+  list-style-type: none;
+}
+.menu ul li a{
+  color: white;
+  text-decoration: none;
+}
+
+.form-control{
+  width: 450px;
+}
+
+
+/* Movie Card */
+.movie-card{
+  position: block;
+  top: 0;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content:space-evenly;
+}
+
+.card{
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 15px;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+.card:hover{
+  box-shadow: rgb(9, 13, 17) 0px 20px 30px -10px;
+  /* transition: transform 0.2s ease, z-index 0.3s ease, */
+}
+
+
+.card-img-top{
+  border-radius: 15px;
+  height: 100%;
+  width: 100%;
+}
+
+
+.shadow{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  border-radius: 0px 0px 15px 15px;
+  z-index: -1;
+}
+
+.card-content{
+  position: absolute;
+  width: calc(100% - 20px);
+  font-family: sans-serif;
+  font-size: 7px;
+  bottom: 0;
+  left: 0;
+  padding: 10px;
+  z-index: 1;
+}
+
+.content1{
+  display: flex;
+  flex-flow: row;
+}
+
+.card-content .content1 p:first-child{
+  background-color: grey;
+  padding: 2px;
+  border-radius: 5px;
+}
+
+.checked {
+  color: orange;
+}
+
+
+/* Billboard */
+.frame {
+  position: absolute;
+  width: 100%; 
+  height: 100%;
+  z-index: -1;
+}
+.frame::after {
+  content: "";
+  position: absolute;
+  top: 480px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50%; /* Adjust the height of the fade effect */
+  background: linear-gradient(to top, #141414, rgba(0, 0, 0, 0));
+  z-index: 1; /* Make sure this is above other content */
+}
+
+.billboard{
+  position: absolute;
+  width: 100%;
+  height: auto;
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+}
+
+.content{
+  font-family: "Roboto", sans-serif;
+  color: white;
+  padding-top: 8rem;
+  padding-left: 2rem;
+  padding-right: 2rem; 
+  height: 400px;
+}
+
+.content-title{
+  font-size: 3em;
+  margin-top: 1em;
+  margin-bottom: 0.1em;
+}
+
+.content-title a{
+  color: white;
+  text-decoration: none;
+}
+
+.content-rating{
+  margin-bottom: 0.1em;
+}
+
+.genre-list{
+  display: flex;
+  flex-flow: row;
+  margin-bottom: 0.1em;
+}
+
+.genre-list p{
+  font-size: smaller;
+  margin-right: 1em;
+  padding: 0.5em;
+  border: white 1px solid;
+  border-radius: 50px;
+}
+
+.content-info{
+  font-weight: 500;
+  font-size: medium;
+  width: 50%;
+  height: 100px;
+  margin-bottom: 2em;
+}
+
+.review-button{
+  font-size: large;
+  height: 40px;
+  margin-right: 1em; 
+  padding: 10px;
+  border-radius: 10px;
+  background-color: orange;
+}
+
+.save-button{
+  font-size: 25px;
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+  border-radius: 50% 50%;
+}
+
+
+
+
+/* Card for Popular Movie */
+.slick-slider{
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-bottom: 200px;
+  position: relative;
+}
+
+.slick-track{
+  margin: auto;
+  display: flex;
+  align-items: center;
+  
+}
+.slick-dots li.slick-active button:before {
+  color:White !important;
+}
+
+.popular{
+  display: flex;
+  flex-flow: row;
+  justify-content:space-evenly;
+}
+
+.popular-card{
+  /* opacity: 0.5; */
+  border-radius: 15px;
+  cursor: pointer;
+  width: 10rem;
+  z-index: -1;
+}
+.popular-card:hover{
+  opacity: 1;
+  z-index: 1;
+}
+.popular-card:hover{
+  box-shadow: rgb(9, 13, 17) 0px 20px 30px -10px;
+  /* transition: transform 0.2s ease, z-index 0.3s ease, */
+}
+
